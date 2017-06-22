@@ -5,6 +5,7 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
+gem 'country_select'
 gem "gmaps4rails"
 gem "geocoder"
 gem 'omniauth-facebook'
