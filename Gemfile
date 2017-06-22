@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
-
+gem "geocoder"
 gem 'omniauth-facebook'
-
-# for simple form:
-gem 'country_select'
-
+gem 'country_select' # for simple form:
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'

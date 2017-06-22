@@ -7,6 +7,8 @@ class BikesController < ApplicationController
 
   def show
     @booking = Booking.new
+    # @alert_message = "You are viewing a bike with the ID #{@bike.id}" #example javascript yielded after_js
+    @bike_coordinates = { lat: @bike.latitude, lng: @bike.longitude }
   end
 
   def new

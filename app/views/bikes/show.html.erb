@@ -35,3 +35,13 @@ state: <%= @bike.state %> <br>
   <%= f.input :return_date %>
   <%= f.button :submit %>
 <% end %>
+
+
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      var coord = <%= raw @bike_coordinates.to_json %>;
+      alert('Bike coordinates are ' + coord.lat + ', ' + coord.lng);
+    });
+  </script>
+<% end %>

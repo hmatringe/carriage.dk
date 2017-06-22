@@ -6,7 +6,7 @@ end
 puts "All records deleted, creating new records"
 
 user1 = User.create(first_name:"Lotte", last_name:"Christensen", email:"lottechr@hotmail.com", password:"123456", address:"Sigbrits Allé 3 1tv, 2300 Copenhagen", phone:"50 40 30 23", postal_code: "2300", city: "Copenhagen")
-bike1 = Bike.create(brand:"Nihola")
+bike1 = Bike.create(brand:"Nihola", address:"Sigbrits Allé 3, 2300 Copenhagen")
 
 bike1.user = user1
 
