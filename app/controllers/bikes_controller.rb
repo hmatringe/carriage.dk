@@ -2,7 +2,14 @@ class BikesController < ApplicationController
   before_action :set_bike, only: [:show]
 
   def index
-    @bikes = Bike.all
+    @bikes = Bike.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@bikes) do |bike, marker|
+      marker.lat bike.latitude
+      marker.lng bike.longitude
+      # marker.infowindow render_to_string(partial: "/bikes/map_box", locals: { bike: bike })
+    end
+
   end
 
   def show

@@ -5,6 +5,9 @@
 <%= bike.input :description %>
 <%= bike.input :caption %>
 <%= bike.input :address %>
+<%= bike.input :zip_code %>
+<%= bike.input :city %>
+<%= bike.input :country %>
 <%= bike.input :brand_model %>
 <%= bike.input :brand_sku %>
 <%= bike.input :brand %>
@@ -23,4 +26,8 @@
 <%= bike.input :state %>
 <%= bike.input :photo, as: :attachinary %>
 <%= bike.button :submit %>
+<% end %>
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDANjx3bosEtIyzJaoWs50Wnt6nt_1rmxU"></script>
 <% end %>

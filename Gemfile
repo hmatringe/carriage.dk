@@ -1,9 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
+gem "gmaps4rails"
 gem "geocoder"
 gem 'omniauth-facebook'
-gem 'country_select' # for simple form:
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
