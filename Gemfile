@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.3'
 
 
+gem 'omniauth-facebook'
+
 # for simple form:
 gem 'country_select'
 
