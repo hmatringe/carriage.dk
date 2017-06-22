@@ -27,3 +27,11 @@ box_dimensions: <%= @bike.box_dimensions %> <br>
 state: <%= @bike.state %> <br>
 
 <%= link_to "back to home", bikes_path %>
+
+<br><br><br><br><br>
+
+<%= simple_form_for [@bike, @booking] do |f| %>
+  <%= f.input :pick_up_date %>
+  <%= f.input :return_date %>
+  <%= f.button :submit %>
+<% end %>
