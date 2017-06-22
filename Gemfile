@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 
+
+# for simple form:
+gem 'country_select'
+
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

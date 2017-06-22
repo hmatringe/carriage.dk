@@ -1,0 +1,26 @@
+<h1>Bikes#new</h1>
+<%= simple_form_for @bike do |bike| %>
+<%= bike.input :color %>
+<%= bike.input :description_title %>
+<%= bike.input :description %>
+<%= bike.input :caption %>
+<%= bike.input :address %>
+<%= bike.input :brand_model %>
+<%= bike.input :brand_sku %>
+<%= bike.input :brand %>
+<%= bike.input :renter_must_have_experience_driving_cargo_bikes %>
+<%= bike.input :renter_must_have_experience_cycling_in_the_city %>
+<%= bike.input :renter_can_be_a_company %>
+<%= bike.input :has_seatbelt %>
+<%= bike.input :has_rain_cover %>
+<%= bike.input :box_has_bench %>
+<%= bike.input :is_electric %>
+<%= bike.input :children_seating_capacity, input_html: { min: "0", max: "10" }%>
+<%= bike.input :gears_set %>
+<%= bike.input :light_set %>
+<%= bike.input :lock_set %>
+<%= bike.input :box_dimensions %>
+<%= bike.input :state %>
+<%= bike.input :photo, as: :attachinary %>
+<%= bike.button :submit %>
+<% end %>

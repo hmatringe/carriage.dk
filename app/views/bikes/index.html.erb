@@ -1,0 +1,7 @@
+<h1>Bikes#index</h1>
+<% @bikes.each do |bike|  %>
+  <%= link_to bike_path(bike) do %>
+    Bike n°<%= bike.id %>, brand: <%= bike.brand %>
+  <% end %>
+  <br>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Bikes#show</h1>
+<% @bike.photo.each do |photo| %>
+  <%= photo.id %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fit %>
+  <br>
+<% end %>
+color: <%= @bike.color %> <br>
+description_title: <%= @bike.description_title %> <br>
+description: <%= @bike.description %> <br>
+caption: <%= @bike.caption %> <br>
+address: <%= @bike.address %> <br>
+brand_model: <%= @bike.brand_model %> <br>
+brand_sku: <%= @bike.brand_sku %> <br>
+brand: <%= @bike.brand %> <br>
+renter_must_have_experience_driving_cargo_bikes: <%= @bike.renter_must_have_experience_driving_cargo_bikes %> <br>
+renter_must_have_experience_cycling_in_the_city: <%= @bike.renter_must_have_experience_cycling_in_the_city %> <br>
+renter_can_be_a_company: <%= @bike.renter_can_be_a_company %> <br>
+has_seatbelt: <%= @bike.has_seatbelt %> <br>
+has_rain_cover: <%= @bike.has_rain_cover %> <br>
+box_has_bench: <%= @bike.box_has_bench %> <br>
+is_electric: <%= @bike.is_electric %> <br>
+children_seating_capacity: <%= @bike.children_seating_capacity %> <br>
+gears_set: <%= @bike.gears_set %> <br>
+light_set: <%= @bike.light_set %> <br>
+lock_set: <%= @bike.lock_set %> <br>
+box_dimensions: <%= @bike.box_dimensions %> <br>
+state: <%= @bike.state %> <br>
+
+<%= link_to "back to home", bikes_path %>
