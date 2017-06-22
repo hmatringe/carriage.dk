@@ -40,11 +40,11 @@ state: <%= @bike.state %> <br>
 <% end %>
 
 
-<%= content_for(:after_js) do %>
-  <script>
+<%# content_for(:after_js) do %>
+  <!-- <script>
     $(document).ready(function() {
       var coord = <%= raw @bike_coordinates.to_json %>;
       alert('Bike coordinates are ' + coord.lat + ', ' + coord.lng);
     });
-  </script>
-<% end %>
+  </script> -->
+<%# end %>
