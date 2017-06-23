@@ -5,6 +5,8 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
+gem 'rack-wwwhisper', '~> 1.0'
+
 gem 'country_select'
 gem "gmaps4rails"
 gem "geocoder"
