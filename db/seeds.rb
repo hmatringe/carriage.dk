@@ -1,5 +1,5 @@
 puts "Seed starting"
-classes = [Booking, Bike, User]
+classes = [Rental, Bike, User]
 classes.each do |c|
   c.destroy_all
 end
