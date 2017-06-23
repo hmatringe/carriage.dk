@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623081631) do
+ActiveRecord::Schema.define(version: 20170623084621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20170623081631) do
     t.text     "description"
     t.string   "caption"
     t.string   "address"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "country"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "brand_model"
     t.string   "brand"
     t.string   "brand_sku"
@@ -55,26 +60,21 @@ ActiveRecord::Schema.define(version: 20170623081631) do
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
     t.integer  "user_id"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "zip_code"
-    t.string   "city"
-    t.string   "country"
   end
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "rentals", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bike_id"
     t.date     "pick_up_date"
     t.date     "return_date"
     t.string   "state"
     t.string   "bike_sku"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
     t.string   "message_to_owner"
     t.boolean  "accepts_terms"
-    t.index ["bike_id"], name: "index_bookings_on_bike_id", using: :btree
-    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["bike_id"], name: "index_rentals_on_bike_id", using: :btree
+    t.index ["user_id"], name: "index_rentals_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,10 +90,6 @@ ActiveRecord::Schema.define(version: 20170623081631) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "address"
-    t.string   "phone"
-    t.string   "postal_code"
-    t.string   "city"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "provider"
@@ -103,11 +99,15 @@ ActiveRecord::Schema.define(version: 20170623081631) do
     t.datetime "token_expiry"
     t.date     "birthday"
     t.text     "profile_description"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "postal_code"
+    t.string   "city"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "bikes", "users"
-  add_foreign_key "bookings", "bikes"
-  add_foreign_key "bookings", "users"
+  add_foreign_key "rentals", "bikes"
+  add_foreign_key "rentals", "users"
 end

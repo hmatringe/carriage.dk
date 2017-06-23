@@ -6,6 +6,11 @@ class CreateBikes < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :caption
       t.string :address
+      t.string :zip_code
+      t.string :city
+      t.string :country
+      t.float  :latitude
+      t.float  :longitude
       t.string :brand_model
       t.string :brand
       t.string :brand_sku

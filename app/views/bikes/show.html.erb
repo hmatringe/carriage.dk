@@ -33,7 +33,7 @@ state: <%= @bike.state %> <br>
 
 <br><br><br><br><br>
 
-<%= simple_form_for [@bike, @booking] do |f| %>
+<%= simple_form_for [@bike, @rental] do |f| %>
   <%= f.input :pick_up_date %>
   <%= f.input :return_date %>
   <%= f.button :submit %>
