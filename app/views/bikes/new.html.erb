@@ -27,6 +27,10 @@
 <%= bike.input :photo, as: :attachinary %>
 <%= bike.button :submit %>
 <% end %>
+<br>
+<h1>TODO fix flow</h1>
+<br>
+<%= link_to image_tag('blue-on-light.png'), user_stripe_connect_omniauth_authorize_path %>
 
 <%# content_for(:after_js) do %>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key==#{ENV['GOOGLE_API_BROWSER_KEY']}"></script> -->
