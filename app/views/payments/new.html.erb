@@ -1,1 +1,17 @@
 <h1>Payments#new</h1>
+<h1>Payment for the rental of the bike <%= @rental.bike_sku %></h1>
+<%= form_tag bike_rental_payments_path(@rental) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@rental.amount) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= ENV['stripe_publishable_key'] %>"
+    data-name="Renting a bike on carriage.dk"
+    data-email="<%= current_user.email %>"
+    data-description="Bike <%= @rental.bike_sku %>"
+    data-amount="<%= @rental.amount_Øres %>"
+    data-currency="<%= @rental.amount.currency %>"></script>
+<% end %>

@@ -28,6 +28,8 @@ light_set: <%= @bike.light_set %> <br>
 lock_set: <%= @bike.lock_set %> <br>
 box_dimensions: <%= @bike.box_dimensions %> <br>
 state: <%= @bike.state %> <br>
+price: <%= humanized_money_with_symbol(@bike.price) %> <br>
+
 
 <%= link_to "back to home", bikes_path %>
 
@@ -38,6 +40,11 @@ state: <%= @bike.state %> <br>
   <%= f.input :return_date %>
   <%= f.button :submit %>
 <% end %>
+<br>
+<%# form_tag bike_rentals_path do %>
+  <%# hidden_field_tag 'rental_id', @bike %>
+  <%# submit_tag 'Create rental', class: 'btn btn-primary' %>
+<%# end %>
 
 
 <%# content_for(:after_js) do %>
