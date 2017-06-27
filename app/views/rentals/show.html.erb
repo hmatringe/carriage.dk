@@ -1,1 +1,8 @@
 <h1>Rentals#show</h1>
+
+Bike ID <%= @bike.id %> <br>
+Rental ID <%= @rental.id %> <br>
+Rental amount <%= humanized_money_with_symbol(@rental.amount)  %> <br>
+Rental bike SKU <%= @rental.bike_sku %> <br>
+Rental state <%= @rental.state %> <br>
+Rental payment <%= @rental.payment %> <br>

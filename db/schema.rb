@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626071338) do
+ActiveRecord::Schema.define(version: 20170627182258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170626071338) do
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
     t.integer  "user_id"
+    t.integer  "price_Øres",                                      default: 0, null: false
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -71,8 +72,10 @@ ActiveRecord::Schema.define(version: 20170626071338) do
     t.string   "bike_sku"
     t.string   "message_to_owner"
     t.boolean  "accepts_terms"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "amount_Øres",      default: 0, null: false
+    t.json     "payment"
     t.index ["bike_id"], name: "index_rentals_on_bike_id", using: :btree
     t.index ["user_id"], name: "index_rentals_on_user_id", using: :btree
   end
@@ -105,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170626071338) do
     t.string   "city"
     t.string   "publishable_key"
     t.string   "access_code"
+    t.string   "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

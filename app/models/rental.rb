@@ -4,4 +4,6 @@ class Rental < ApplicationRecord
 
   validates :pick_up_date, presence: true
   validates :return_date, presence: true
+
+  monetize :amount_Øres
 end
