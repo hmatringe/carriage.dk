@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :bikes, only: [:index, :show, :new, :create] do
-    resources :rentals, only: [:create, :update, :show] do
+    resources :rentals, only: [:index, :create, :update, :show] do
       resources :payments, only: [:new, :create]
     end
   end
