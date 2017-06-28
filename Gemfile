@@ -5,6 +5,7 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
 
+gem 'faker'
 gem 'money-rails'
 gem 'stripe'
 gem 'omniauth-stripe-connect'
