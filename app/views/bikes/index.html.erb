@@ -1,26 +1,18 @@
-<h1>Bikes#index</h1>
-<% @bikes.each do |bike|  %>
-  <%= link_to bike_path(bike) do %>
-    Bike n°<%= bike.id %>, brand: <%= bike.brand %>
-  <% end %>
-  <br>
-<% end %>
-<div id="map" style="width: 100%; height: 600px;"></div>
+<div class="bike_index-container">
+
+  <div class="bike_index-left-half">
+    <%= render "index_list" %>
+  </div>
+
+  <div class="bike_index-right-half hidden-xs">
+    <%# render "index_list" %>
+    <%= render "index_map" %>
+  </div>
+</div>
+
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
+    $(document.body).addClass('bike_index-body-noscroll');
   </script>
 <% end %>

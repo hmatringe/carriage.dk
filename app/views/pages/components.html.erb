@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+
+      <h1 class="text-center">Components carriage.dk</h1>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Avatars</h2>
+        <%= image_tag "louis", class: "avatar", alt: "Louis" %>
+        <%= image_tag "louis", class: "avatar-large", alt: "Louis" %>
+        <%= image_tag "louis", class: "avatar-bordered", alt: "Louis" %>
+        <%= image_tag "louis", class: "avatar-square", alt: "Louis" %>
+        <br><br>
+        <%= image_tag "hadrien", class: "avatar", alt: "hadrien" %>
+        <%= image_tag "hadrien", class: "avatar-large", alt: "hadrien" %>
+        <%= image_tag "hadrien", class: "avatar-bordered", alt: "hadrien" %>
+        <%= image_tag "hadrien", class: "avatar-square", alt: "hadrien" %>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Buttons</h2>
+        <h3>Standard</h3>
+        <%= link_to t("Submit"), "", class: "btn btn-shadow btn-brand" %>
+        <h3>Large</h3>
+        <%= link_to t("Submit"), "", class: "btn btn-shadow btn-brand btn-w260" %>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Badge</h2>
+        <h3>User badge</h3>
+        <div class="badge-container">
+          <%= image_tag "hadrien", class: "avatar", alt: "hadrien" %>
+          <div class="badge badge-red">M</div>
+        </div>
+        <h3>Icon badge</h3>
+        <div class="badge-container">
+          <i class="fa fa-envelope-o"></i>
+          <div class="badge badge-blue">3</div>
+        </div>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Banner</h2>
+        <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path "background_n1d4lc.jpg", crop: :fit; %>');">
+          <div class="banner-content">
+            <h1>Some Stuff</h1>
+            <p>Very cool stuff, useful and smart</p>
+            <a class="btn btn-primary btn-lg">GET IT</a>
+            <%# cl_image_path("background_n1d4lc.jpg") %>
+          </div>
+        </div>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Card</h2>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path "background_n1d4lc.jpg" %>');">
+          <div class="card-category">Popular</div>
+          <div class="card-description">
+            <h2>Some stuff</h2>
+            <p>Very cool stuff, useful and smart</p>
+          </div>
+          <%= image_tag "hadrien", class: "avatar card-user", alt: "hadrien" %>
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>List item</h2>
+          <h3>Product with image</h3>
+          <div class="product">
+            <div class='product-upvote'>
+              <div class="product-arrow"></div>
+              <div class='product-count'>95</div>
+            </div>
+            <%= cl_image_tag "background_n1d4lc.jpg", class: "product-image hidden-xs" %>
+            <div class='product-body'>
+              <h3>Kudoz</h3>
+              <p>Les meilleures offres d'emploi cadre sur mobile</p>
+            </div>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><a href=""><i class="fa fa-heart"></i></a></li>
+              <li><a href=""><i class="fa fa-share"></i></a></li>
+              <li><a href=""><i class="fa fa-star"></i></a></li>
+            </ul>
+          </div>
+
+          <h3>Hidden controls</h3>
+          <div class="product">
+            <div class='product-upvote'>
+              <div class="product-arrow"></div>
+              <div class='product-count'>95</div>
+            </div>
+            <%= cl_image_tag "background_n1d4lc.jpg", class: "product-image hidden-xs" %>
+            <div class='product-body'>
+              <h3>Kudoz</h3>
+              <p>Les meilleures offres d'emploi cadre sur mobile</p>
+            </div>
+            <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+              <li><a href=""><i class="fa fa-heart"></i></a></li>
+              <li><a href=""><i class="fa fa-share"></i></a></li>
+              <li><a href=""><i class="fa fa-star"></i></a></li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>Tabs</h2>
+          <div class="tabs">
+            <a class="tab active" href="#">
+              <h3>350</h3>
+              <p>Followers</p>
+            </a>
+            <a class="tab" href="#">
+              <h3>456</h3>
+              <p>Following</p>
+            </a>
+            <a class="tab" href="#">
+              <h3>189</h3>
+              <p>Upvoted</p>
+            </a>
+            <a class="tab" href="#">
+              <h3>13</h3>
+              <p>Submitted</p>
+            </a>
+          </div>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+       <h2>Share links</h2>
+      </div>
+
+      <!-- <div class="gray_box padded margined_updown">
+      <h2>Component</h2>
+      </div> -->
+    </div>
+  </div>
+</div>
+

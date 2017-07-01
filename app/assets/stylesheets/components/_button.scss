@@ -1,0 +1,25 @@
+.btn {
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+}
+
+.btn-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.06) ;
+}
+
+.btn-w260 {
+  min-width: 260px;
+}
+
+.btn-brand {
+  line-height: 1.33333;
+  font-size: 20px;
+  padding: 13px 16px;
+  border: 0;
+  font-weight: 400;
+  border-radius: 3px;
+  color: white;
+  background-color: $brand-color;
+  border-color: #ccc;
+}

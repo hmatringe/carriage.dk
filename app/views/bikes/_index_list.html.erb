@@ -1,0 +1,66 @@
+<% @bikes.each do |bike|  %>
+
+  <%= link_to bike_path(bike) do %>
+    <div class="bike_index-card">
+      <div class="bike_index-wrapper">
+        <div class="bike_index-wrapper-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bike.photo.first.path, crop: :fit %>');">
+          <div class="bike_index-picture">
+            <%# cl_image_tag bike.photo.first.path, crop: :fit %>
+            <%# cl_image_path bike.photo.first.path, crop: :fit %>
+          </div>
+          <div class="bike_index-caption">
+            <%= bike.caption + "   " %>
+          </div>
+        </div>
+        <div class="bike_index-wrapper-info">
+          <div class="bike_index-wrapper-info-bike-wrapper">
+            <div class="bike_index-heading">
+              <!-- TODO make conditional for … -->
+              <h3> <%= "#{bike.brand} #{bike.brand_model} #{bike.brand_sku}"[0..31] %> </h3>
+            </div>
+            <div class="bike_index-descr">
+              <%= bike.description_title %>
+            </div>
+            <div class="bike_index-tags">
+              <span>TagEx1</span> <span>TageE2</span>
+            </div>
+          </div>
+          <div class="bike_index-wrapper-info-owner-wrapper">
+            <div class="bike_index-wrapper-info-owner-content">
+              <div class="bike_index-avatar">
+                  <%= image_tag "hadrien", class: "avatar-large", alt: "hadrien" %>
+              </div>
+              <div class="bike_index-cartouche-wrapper">
+                <div class="bike_index-cartouche-content">
+                  <div class="bike_index-name">
+                    <%= bike.user.first_name %> <%= bike.user.last_name[0..0] %>.
+                    <% 5.times do %> <!-- TODO replace 5 by ratings # -->
+                       <i class="bike_index-ratings fa fa-star" aria-hidden="true"></i>
+                    <% end %>
+                  </div>
+                  <!-- <div class="bike_index-ratings">
+                  </div> -->
+                  <div class="bike_index-stats">
+                    <div class="bike_index-stat">
+                      <%= "92% accepted • 23 min response"[0..40]%>
+                      <%# "92% accepted 23 min response"[0..40] + "…" %> <!-- TODO make conditional for … -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bike_index-price-wrapper">
+                <div class="bike_index-price">
+                  <%= humanized_money bike.price %>
+                </div>
+                <div class="bike_index-currency">
+                  <%= bike.price.currency.iso_code + "/day" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+<% end %>

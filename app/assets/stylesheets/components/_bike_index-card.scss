@@ -1,0 +1,118 @@
+.bike_index-card {
+  height: 190px;
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: #212121;
+  border-radius: 2px;
+  padding: 7px;
+}
+.bike_index-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  height: 100%;
+  // position: relative;
+}
+.bike_index-wrapper-picture {
+  position: relative;
+  // left: 0px;
+  flex: 0 0 40%;
+  border-radius: 3px 0 0 3px;
+}
+@media (max-width:767px){
+  .bike_index-wrapper-picture {
+    border-radius: 3px 3px 0 0;
+  }
+}
+.bike_index-picture {
+  width: 100px;
+  height: 100px;
+}
+.bike_index-caption {
+  position: absolute;
+  top: 10px;
+  left: -3px;
+  background-color: $blue;
+  padding: 7px;
+  border-radius: 3px;
+  color: white;
+}
+.bike_index-wrapper-info {
+  // position: absolute;
+  // right: 0px;
+  flex: 1 0 60%;
+  display: flex;
+  flex-flow: column wrap;
+  height: 100%;
+}
+.bike_index-wrapper-info-bike-wrapper {
+  background-color: white;
+  height: 65%;
+  border-bottom: 1px solid #EEEEEE;
+  padding: 0 0 0 5px;
+}
+.bike_index-wrapper-info-owner-wrapper {
+  background-color: white;
+  height: 35%;
+  border-top: 1px solid #EEEEEE;
+}
+.bike_index-wrapper-info-owner-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  height: 100%;
+}
+.bike_index-heading {
+}
+.bike_index-descr {
+}
+.bike_index-tags {
+  color: #757575;
+}
+.bike_index-avatar {
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bike_index-cartouche-wrapper {
+  // display: flex;
+  // flex-wrap: wrap;
+  // align-content: center;
+  // height: 100%;
+  flex: 1 0 auto;
+}
+.bike_index-cartouche-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.bike_index-name {
+
+}
+.bike_index-ratings {
+  color: #FFD600;
+}
+.bike_index-stats {
+  font-size: small;
+  color: #757575;
+}
+.bike_index-stat {
+}
+.bike_index-price-wrapper {
+  flex: 0 0 20%;
+  border-left: 1px solid #EEEEEE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bike_index-price {
+  font-size: x-large;
+}
+.bike_index-currency {
+  color: #757575;
+  font-size: small;
+}

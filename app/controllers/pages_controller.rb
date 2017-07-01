@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @bikes = Bike.last(3)
   end
+
+  def components
+    @bike = Bike.last
+  end
 end

@@ -5,11 +5,21 @@
  * ------------------------------------- */
 
 // Paddings
-.padded {
-  padding-top: 5em;
-  padding-bottom: 5em;
+.padded_updown {
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
-
+.padded {
+  padding: 2em;
+}
+// Margins
+.margined_updown {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.margined {
+  margin: 2em;
+}
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -22,4 +32,8 @@
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+.gray_box {
+  background-color: #F9F9F9;
+  // padding: 20px;
 }
