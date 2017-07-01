@@ -3,7 +3,7 @@
   <%= link_to bike_path(bike) do %>
     <div class="bike_index-card">
       <div class="bike_index-wrapper">
-        <div class="bike_index-wrapper-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bike.photo.first.path, crop: :fit %>');">
+        <div class="bike_index-wrapper-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path bike.photo.first.path, width: 280, height: 176,  crop: :fill; %>');">
           <div class="bike_index-picture">
             <%# cl_image_tag bike.photo.first.path, crop: :fit %>
             <%# cl_image_path bike.photo.first.path, crop: :fit %>
