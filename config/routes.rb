@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   get '/components', to: 'pages#components'
+  get '/credits', to: 'pages#credits'
 
   root to: 'pages#home'
 

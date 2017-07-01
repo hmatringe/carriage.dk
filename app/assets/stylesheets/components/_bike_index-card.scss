@@ -4,7 +4,14 @@
   background-size: cover !important;
   color: #212121;
   border-radius: 2px;
-  padding: 7px;
+  border: 2px;
+}
+.bike_index-card:hover {
+  box-shadow: 0 0 2px 2px #E0E0E0;
+  // box-shadow: 0 0 1px 1px red;
+}
+a:hover {
+  text-decoration: none;
 }
 .bike_index-wrapper {
   display: flex;

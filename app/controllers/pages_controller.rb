@@ -8,4 +8,7 @@ class PagesController < ApplicationController
   def components
     @bike = Bike.last
   end
+
+  def credits
+  end
 end
