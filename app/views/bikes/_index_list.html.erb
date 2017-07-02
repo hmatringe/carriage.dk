@@ -33,7 +33,7 @@
               <div class="bike_index-cartouche-wrapper">
                 <div class="bike_index-cartouche-content">
                   <div class="bike_index-name">
-                    <%= bike.user.first_name %> <%= bike.user.last_name[0..0] %>.
+                    <%= bike.user.anonymous %>
                     <% 5.times do %> <!-- TODO replace 5 by ratings # -->
                        <i class="bike_index-ratings fa fa-star" aria-hidden="true"></i>
                     <% end %>

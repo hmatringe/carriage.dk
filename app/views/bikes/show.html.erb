@@ -1,57 +1,64 @@
-<h1>Bikes#show</h1>
-<% @bike.photo.each do |photo| %>
-  <%= photo.id %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fit %>
-  <br>
-<% end %>
-color: <%= @bike.color %> <br>
-description_title: <%= @bike.description_title %> <br>
-description: <%= @bike.description %> <br>
-caption: <%= @bike.caption %> <br>
-address: <%= @bike.address %> <br>
-zip code: <%= @bike.zip_code %> <br>
-city: <%= @bike.city %> <br>
-country: <%= @bike.country %> <br>
-brand_model: <%= @bike.brand_model %> <br>
-brand_sku: <%= @bike.brand_sku %> <br>
-brand: <%= @bike.brand %> <br>
-renter_must_have_experience_driving_cargo_bikes: <%= @bike.renter_must_have_experience_driving_cargo_bikes %> <br>
-renter_must_have_experience_cycling_in_the_city: <%= @bike.renter_must_have_experience_cycling_in_the_city %> <br>
-renter_can_be_a_company: <%= @bike.renter_can_be_a_company %> <br>
-has_seatbelt: <%= @bike.has_seatbelt %> <br>
-has_rain_cover: <%= @bike.has_rain_cover %> <br>
-box_has_bench: <%= @bike.box_has_bench %> <br>
-is_electric: <%= @bike.is_electric %> <br>
-children_seating_capacity: <%= @bike.children_seating_capacity %> <br>
-gears_set: <%= @bike.gears_set %> <br>
-light_set: <%= @bike.light_set %> <br>
-lock_set: <%= @bike.lock_set %> <br>
-box_dimensions: <%= @bike.box_dimensions %> <br>
-state: <%= @bike.state %> <br>
-price: <%= humanized_money_with_symbol(@bike.price) %> <br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-7 col-xs-offset-1">
+      <div class="bike_show-title-wrapper">
+        <span class="bike_show-title">
+          <%= @bike.brand %>
+        </span>
+        <span class="bike_show-subtitle">
+          <%= @bike.brand_model %>
+        <%= "#{@bike.brand_sku}"[0..31] %>
+        <% 5.times do %> <!-- TODO replace 5 by ratings # -->
+           <i class="bike_index-ratings fa fa-star" aria-hidden="true"></i>
+        <% end %>
+        </span>
+      </div>
+      <span class="bike_show-ownedby">
+        <%= link_to "Owned by #{@bike.user.anonymous}", bike_profile_path(@bike, @bike.user) %>
+      </span>
+      <%= render 'show_carousel' %>
+      color: <%= @bike.color %> <br>
+      description_title: <%= @bike.description_title %> <br>
+      description: <%= @bike.description %> <br>
+      caption: <%= @bike.caption %> <br>
+      address: <%= @bike.address %> <br>
+      zip code: <%= @bike.zip_code %> <br>
+      city: <%= @bike.city %> <br>
+      country: <%= @bike.country %> <br>
+      renter_must_have_experience_driving_cargo_bikes: <%= @bike.renter_must_have_experience_driving_cargo_bikes %> <br>
+      renter_must_have_experience_cycling_in_the_city: <%= @bike.renter_must_have_experience_cycling_in_the_city %> <br>
+      renter_can_be_a_company: <%= @bike.renter_can_be_a_company %> <br>
+      has_seatbelt: <%= @bike.has_seatbelt %> <br>
+      has_rain_cover: <%= @bike.has_rain_cover %> <br>
+      box_has_bench: <%= @bike.box_has_bench %> <br>
+      is_electric: <%= @bike.is_electric %> <br>
+      children_seating_capacity: <%= @bike.children_seating_capacity %> <br>
+      gears_set: <%= @bike.gears_set %> <br>
+      light_set: <%= @bike.light_set %> <br>
+      lock_set: <%= @bike.lock_set %> <br>
+      box_dimensions: <%= @bike.box_dimensions %> <br>
+      state: <%= @bike.state %> <br>
+      price: <%= humanized_money_with_symbol(@bike.price) %> <br>
+
+      <%= link_to "back to home", bikes_path %>
+      <%# content_for(:after_js) do %>
+        <!-- <script>
+          $(document).ready(function() {
+            var coord = <%= raw @bike_coordinates.to_json %>;
+            alert('Bike coordinates are ' + coord.lat + ', ' + coord.lng);
+          });
+        </script> -->
+      <%# end %>
 
 
-<%= link_to "back to home", bikes_path %>
 
-<br><br><br><br><br>
-
-<%= simple_form_for [@bike, @rental] do |f| %>
-  <%= f.input :pick_up_date %>
-  <%= f.input :return_date %>
-  <%= f.button :submit %>
-<% end %>
-<br>
-<%# form_tag bike_rentals_path do %>
-  <%# hidden_field_tag 'rental_id', @bike %>
-  <%# submit_tag 'Create rental', class: 'btn btn-primary' %>
-<%# end %>
-
-
-<%# content_for(:after_js) do %>
-  <!-- <script>
-    $(document).ready(function() {
-      var coord = <%= raw @bike_coordinates.to_json %>;
-      alert('Bike coordinates are ' + coord.lat + ', ' + coord.lng);
-    });
-  </script> -->
-<%# end %>
+    </div>
+    <div class="col-xs-3">
+      <%= simple_form_for [@bike, @rental] do |f| %>
+        <%= f.input :pick_up_date %>
+        <%= f.input :return_date %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

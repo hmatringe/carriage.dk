@@ -28,7 +28,7 @@ class User < ApplicationRecord
     return user
   end
 
-  # def self.find_for_stripe_oauth(auth)
-
-  # end
+  def anonymous
+    "#{self.first_name} " + "#{self.last_name}"[0..0] + "."
+  end
 end
