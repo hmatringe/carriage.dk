@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container bike_show">
   <div class="row">
-    <div class="col-xs-7 col-xs-offset-1">
+    <div class="col-xs-12 col-sm-8">
       <div class="bike_show-title-wrapper">
         <span class="bike_show-title">
           <%= @bike.brand %>
@@ -12,32 +12,39 @@
            <i class="bike_index-ratings fa fa-star" aria-hidden="true"></i>
         <% end %>
         </span>
-      </div>
+      <br>
       <span class="bike_show-ownedby">
-        <%= link_to "Owned by #{@bike.user.anonymous}", bike_profile_path(@bike, @bike.user) %>
+        Owned by <%= link_to "#{@bike.user.anonymous}", bike_profile_path(@bike, @bike.user) %>
       </span>
+      </div>
       <%= render 'show_carousel' %>
+       <div class="bike_show-description-wrapper">
+       <p>Owner's description:</p>
+       <h3><%= @bike.description_title %></h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <%= render 'show_description' %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= render 'show_booleans' %>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <p>Bike information:</p>
+      <%= render 'show_specs' %>
+      <hr>
+      <%= render 'show_map' %>
+      <hr>
+      <%= render 'show_ratings' %>
       color: <%= @bike.color %> <br>
-      description_title: <%= @bike.description_title %> <br>
-      description: <%= @bike.description %> <br>
+      <!-- description_title: <%= @bike.description_title %> <br>
+      description: <%= @bike.description %> <br> -->
       caption: <%= @bike.caption %> <br>
       address: <%= @bike.address %> <br>
       zip code: <%= @bike.zip_code %> <br>
       city: <%= @bike.city %> <br>
       country: <%= @bike.country %> <br>
-      renter_must_have_experience_driving_cargo_bikes: <%= @bike.renter_must_have_experience_driving_cargo_bikes %> <br>
-      renter_must_have_experience_cycling_in_the_city: <%= @bike.renter_must_have_experience_cycling_in_the_city %> <br>
-      renter_can_be_a_company: <%= @bike.renter_can_be_a_company %> <br>
-      has_seatbelt: <%= @bike.has_seatbelt %> <br>
-      has_rain_cover: <%= @bike.has_rain_cover %> <br>
-      box_has_bench: <%= @bike.box_has_bench %> <br>
-      is_electric: <%= @bike.is_electric %> <br>
-      children_seating_capacity: <%= @bike.children_seating_capacity %> <br>
-      gears_set: <%= @bike.gears_set %> <br>
-      light_set: <%= @bike.light_set %> <br>
-      lock_set: <%= @bike.lock_set %> <br>
-      box_dimensions: <%= @bike.box_dimensions %> <br>
-      state: <%= @bike.state %> <br>
       price: <%= humanized_money_with_symbol(@bike.price) %> <br>
 
       <%= link_to "back to home", bikes_path %>
@@ -53,7 +60,7 @@
 
 
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-12 col-sm-4">
       <%= simple_form_for [@bike, @rental] do |f| %>
         <%= f.input :pick_up_date %>
         <%= f.input :return_date %>

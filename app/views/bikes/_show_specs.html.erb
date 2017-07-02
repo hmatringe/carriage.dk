@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <table class="table table-condensed table-striped">
+    <tbody class="small">
+      <tr>
+        <td class="col-xs-2">
+          Has a seatbelt?
+        </td>
+        <td class="col-xs-2">
+          <i class="fa <%= @bike.has_seatbelt ? "fa-check-circle" : "fa-times-circle-o" %>" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Has a rain cover?
+        </td>
+        <td class="col-xs-2">
+          <i class="fa <%= @bike.has_rain_cover ? "fa-check-circle" : "fa-times-circle-o" %>" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Has a bench?
+        </td>
+        <td class="col-xs-2">
+          <i class="fa <%= @bike.box_has_bench ? "fa-check-circle" : "fa-times-circle-o" %>" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Is electric?
+        </td>
+        <td class="col-xs-2">
+          <i class="fa <%= @bike.is_electric ? "fa-check-circle" : "fa-times-circle-o" %>" aria-hidden="true"></i>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Children seating capacity
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.children_seating_capacity.nil? ? "na" : @bike.children_seating_capacity %>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <table class="table table-condensed table-striped">
+    <tbody class="small">
+      <tr>
+        <td class="col-xs-2">
+          Gears set
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.gears_set.empty? ? "na" : @bike.gears_set %>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Light set
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.light_set.empty? ? "na" : @bike.light_set %>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Lock set
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.lock_set.empty? ? "na" : @bike.lock_set %>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          Box dimensions
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.box_dimensions.empty? ? "na" : @bike.box_dimensions %>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-2">
+          State
+        </td>
+        <td class="col-xs-2">
+          <%= @bike.state.empty? ? "na" : @bike.state %>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</div>

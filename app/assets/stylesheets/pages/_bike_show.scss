@@ -1,3 +1,11 @@
+.bike_show p {
+  color: #757575;
+  font-size: small;
+}
+.bike_show td {
+  color: #757575;
+  // font-size: small;
+}
 .bike_show-title-wrapper {
   padding: 10px 0;
 }
@@ -10,4 +18,13 @@
 }
 .bike_show-ownedby {
   font-size: small;
+}
+.bike_show-description-wrapper {
+ padding: 10px 0;
+}
+.fa-check-circle {
+  color: $green;
+}
+.fa-times-circle-o {
+  color: $red;
 }
