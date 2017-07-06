@@ -129,10 +129,168 @@
        <h2>Share links</h2>
       </div>
 
+      <div class="gray_box padded margined_updown">
+       <h2>Google Map components</h2>
+        <h3>Index Infowindow</h3>
+          <div class="bike_index_iw-wrapper">
+            <div class="bike_index_iw-content">
+              <div class="bike_index_iw-picture-wrapper">
+                <%= cl_image_tag @bikes.first.photo.first.path, width: 230, height:153, crop: :fill; %>
+              </div>
+              <div class="bike_index_iw-price-wrapper">
+                <span class="bike_index_iw-price-wrapper-price">
+                  <%= humanized_money @bikes.first.price %>
+                </span>
+                <span class="bike_index_iw-price-wrapper-currency">
+                  <%= @bikes.first.price.currency.iso_code + "/day" %>
+                </span>
+              </div>
+              <div class="bike_index_iw-body-wrapper">
+                <div class="bike_index_iw-body-content">
+                  <span class="bike_index_iw-body-content-avatar-wrapper">
+                    <%= image_tag "hadrien", class: "avatar bike_index_iw-body-content-avatar", alt: "" %> <!-- TODO replace by profile pics -->
+                  </span>
+                  <div class="bike_index_iw-body-content-text-wrapper">
+                    <div class="bike_index_iw-body-content-text-content">
+                      <span class="bike_index_iw-body-content-text-content-title">
+                        <%= "#{@bikes.first.brand_model}" %>
+                      </span>
+                      <span class="bike_index_iw-body-content-text-content-descr">
+                        <%= "#{@bikes.first.caption}" %>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        <h3>Index Custom marker</h3>
+        <h3>Show Custome marker zone</h3>
+      </div>
+
+      <div class="gray_box padded margined_updown">
+        <h2>GMap with markers and custom infoWindow</h2>
+        <h3>not the latest version</h3>
+        <div id="map"></div>
+      </div>
+
       <!-- <div class="gray_box padded margined_updown">
       <h2>Component</h2>
       </div> -->
+
     </div>
   </div>
 </div>
 
+<%= content_for(:after_js) do %>
+  <script>
+      $(document).ready(function() {
+      function initMap() {
+        // Define home
+        var home = {lat: 55.658, lng: 12.607 };
+        // Display a map on the page, centered on home
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: home
+        });
+        // Set the InfoWindow content
+        var contentString = '<div class="bike_index_iw-wrapper">' +
+                          '<div class="bike_index_iw-content">' +
+                            '<div class="bike_index_iw-picture-wrapper">' +
+                              '<%= cl_image_tag @bikes.first.photo.first.path, width: 230, height:153, crop: :fit; %>' +
+                            '</div>' +
+                            '<div class="bike_index_iw-price-wrapper">' +
+                              '<span class="bike_index_iw-price-wrapper-price">' +
+                                  <%= humanized_money @bikes.first.price %> +
+                              '</span>' +
+                              '<span class="bike_index_iw-price-wrapper-currency">' +
+                                  '<%= @bikes.first.price.currency.iso_code %>' +
+                              '</span>' +
+                            '</div>' +
+                            '<div class="bike_index_iw-body-wrapper">' +
+                              '<div class="bike_index_iw-body-content">' +
+                                '<span class="bike_index_iw-body-content-avatar-wrapper">' +
+                                    '<img class="avatar bike_index_iw-body-content-avatar" alt="" src="/assets/hadrien.jpg">' +
+                                '</span>' +
+                                '<div class="bike_index_iw-body-content-text-wrapper">' +
+                                  '<div class="bike_index_iw-body-content-text-content">' +
+                                    '<span class="bike_index_iw-body-content-text-content-title">' +
+                                        '<%= @bikes.first.brand_model[0..21] %>' +
+                                    '</span>' +
+                                    '<span class="bike_index_iw-body-content-text-content-descr">' +
+                                        '<%= @bikes.first.caption %>' +
+                                    '</span>' +
+                                  '</div>' +
+                                '</div>' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>';
+        // var contentString2 = <%# render "contentTest" %>
+        // alert(contentString2);
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 230
+        });
+
+        // Define bounds
+        var bounds = new google.maps.LatLngBounds();
+        // Define infoWindow
+        var infoWindow = new google.maps.InfoWindow(); /* SINGLE */
+
+        // Multiple markers
+        var markers = <%= raw @markers.to_json %>
+        console.log(markers);
+        for( i = 0; i < markers.length; i++) {
+              var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+              bounds.extend(position);
+              var marker = new google.maps.Marker({
+                position: {lat: markers[i][1], lng: markers[i][2]},
+                map: map,
+                title: "marker id:" + markers[i][0]
+              });
+        // Allow each marker to have an info window
+         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+             return function() {
+                 infoWindow.setContent(<%= render 'partial_maps' %>);
+                 infoWindow.open(map, marker);
+                 $('.bike_index_iw-wrapper').closest('.gm-style-iw').parent().addClass('custom-iw');
+
+             }
+         })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+
+        // Inject new css to the infowindow
+              google.maps.event.addListener(infoWindow, 'domready', function () {
+              $('.bike_index_iw-wrapper').closest('.gm-style-iw').parent().addClass('custom-iw');
+              });
+        }
+
+        // Closing opened infoWindow by clicking anywhere else on the map
+        google.maps.event.addListener(marker, 'click', function() {
+            if(!marker.open){
+                infoWindow.open(map,marker);
+                marker.open = true;
+            }
+            else{
+                infoWindow.close();
+                marker.open = false;
+            }
+            google.maps.event.addListener(map, 'click', function() {
+                infoWindow.close();
+                marker.open = false;
+            });
+        });
+        // marker.addListener('click', function() {
+        //   infowindow.open(map, marker);
+        // });
+      }
+      // necessary since we use $(document).ready(function()
+      initMap();
+      });
+    </script>
+<% end %>

@@ -1,0 +1,44 @@
+<!-- <div id="map" style="width: 100%; height: calc(100vh - 70px);"></div> -->
+<div id="map"></div>
+
+<%= content_for(:after_js) do %>
+  <script>
+      $(document).ready(function() {
+      function initMap() {
+        // Display a map on the #map
+        var map = new google.maps.Map(document.getElementById('map'), {});
+        // Define bounds
+        var bounds = new google.maps.LatLngBounds();
+        // Define infoWindow
+        var infoWindow = new google.maps.InfoWindow(); /* SINGLE */
+        // Multiple markers
+        var markers = <%= raw @markers.to_json %>
+        for( i = 0; i < markers.length; i++) {
+              var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+              bounds.extend(position);
+              var marker = new google.maps.Marker({
+                position: {lat: markers[i][1], lng: markers[i][2]},
+                map: map,
+                title: "marker id:" + markers[i][0]
+              });
+        // Set an infoWindow to each marker
+         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+             return function() {
+                 infoWindow.setContent(<%= render 'partial_maps' %>);
+                 infoWindow.open(map, marker);
+                  // Inject css to the infowindow
+                  $('.bike_index_iw-wrapper').closest('.gm-style-iw').parent().addClass('custom-iw');
+             }
+         })(marker, i));
+        // Center the map fitting all displayed markers
+        map.fitBounds(bounds);
+        }
+        // Close any opened infoWindow by clicking anywhere (else) on the map
+        google.maps.event.addListener( map, 'click', function() {
+            infoWindow.open( null, null );
+        } );
+      }
+      initMap();
+      });
+    </script>
+<% end %>

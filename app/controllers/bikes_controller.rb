@@ -3,19 +3,27 @@ class BikesController < ApplicationController
 
   def index
     @bikes = Bike.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@bikes) do |bike, marker|
-      marker.lat bike.latitude
-      marker.lng bike.longitude
-      # marker.infowindow render_to_string(partial: "/bikes/map_box", locals: { bike: bike })
+    @bikes.each do |bike|
+    (@markers ||= []).push [
+                            bike.id,
+                            bike.latitude,
+                            bike.longitude,
+                            bike.photo.first.public_id,
+                            bike.price.fractional/100,
+                            bike.price.currency.iso_code,
+                            bike.brand_model.length > 21 ? bike.brand_model[0..21] + '…': bike.brand_model,
+                            bike.caption.length > 25 ? bike.caption[0..25] + "…" : bike.caption
+                            ]
     end
-
   end
 
   def show
     @rental = Rental.new
-    # @alert_message = "You are viewing a bike with the ID #{@bike.id}" #example javascript yielded after_js
-    @bike_coordinates = { lat: @bike.latitude, lng: @bike.longitude }
+    @bike_coordinates = { lat: @bike.latitude, lng: @bike.longitude } # used for a JS test can be deleted.
+    @hash = Gmaps4rails.build_markers(@bike) do |bike, marker|
+      marker.lat bike.latitude
+      marker.lng bike.longitude
+    end
   end
 
   def new

@@ -1,0 +1,65 @@
+.bike_index_iw-wrapper {
+  // height: 153;
+  // background-color: black;
+  width: 229px;
+  // width: 280px;
+}
+.bike_index_iw-content {
+  border-radius: 3px;
+  width: 229px;
+  // width: 280px;
+  position: relative;
+  background-color: white;
+}
+.bike_index_iw-picture-wrapper{
+  // width: 230;
+  // height: 153;
+}
+.bike_index_iw-price-wrapper {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  border-radius: 3px 0 0 28%;
+  color: white;
+  background: $brand-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 10px;
+}
+.bike_index_iw-price-wrapper-price {
+  font-size: large;
+  font-weight: 900;
+}
+.bike_index_iw-price-wrapper-currency {
+  font-size: small;
+}
+.bike_index_iw-body-wrapper {
+  width: 229px;
+}
+.bike_index_iw-body-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 3px 5px;
+}
+.bike_index_iw-body-content-avatar {
+}
+.bike_index_iw-body-content-text-wrapper {
+}
+.bike_index_iw-body-content-text-content {
+  padding: 3px 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+.bike_index_iw-body-content-text-content-title {
+  color: black;
+}
+.bike_index_iw-body-content-text-content-descr {
+  color: #757575;
+  font-size: small;
+
+}
